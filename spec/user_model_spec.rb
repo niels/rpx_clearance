@@ -2,17 +2,23 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 
 
-class UserModel
+class UserModel < MockBase
   include RpxClearance::UserModel
   
-  attr_accessor :identifier, :given_name, :family_name
+  column :identifier, :string
+  column :given_name, :string
+  column :family_name, :string
 end
-
-RpxClearance.user_model = UserModel
 
 
 
 describe RpxClearance::UserModel, 'UserModel mixin' do
+  
+  before do
+    # If set on file-level this does not work if it has been previously set
+    # within another describe block. Why?
+    RpxClearance.user_model = UserModel
+  end
   
   it "new_from_rpx should create a new user model from profile data" do
     profile_data = {
