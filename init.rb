@@ -1,1 +1,1 @@
-require 'rpx_authentication'
+require 'rpx_clearance'

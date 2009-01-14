@@ -1,4 +1,4 @@
-module RpxAuthentication
+module RpxClearance
   module ApplicationController
     
     def self.included(base)
@@ -17,7 +17,7 @@ module RpxAuthentication
       
       # Clearance uses this method
       def user_model
-        RpxAuthentication.user_model
+        RpxClearance.user_model
       end
       
     end

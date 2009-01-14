@@ -1,4 +1,4 @@
-module RpxAuthentication
+module RpxClearance
   # Holds the rpxnow.com API key
   mattr_accessor :api_key, :user_model
   
@@ -15,7 +15,7 @@ module RpxAuthentication
       response = post(
         '/api/v2/auth_info',
         :query => {
-          :apiKey => RpxAuthentication.api_key,
+          :apiKey => RpxClearance.api_key,
           :token => token,
           :extended => "true"
         }
@@ -32,4 +32,4 @@ end
 
 # We might constantly get reloaded in development mode.
 # In this case we also need to slurp in the config after each reload (mainly to set the API key).
-load "#{RAILS_ROOT}/config/initializers/rpx_authentication.rb" if RAILS_ENV == "development"
+load "#{RAILS_ROOT}/config/initializers/rpx_clearance.rb" if RAILS_ENV == "development"

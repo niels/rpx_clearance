@@ -1,4 +1,4 @@
-module RpxAuthentication
+module RpxClearance
   module SessionsController
     
     def self.included(base)
@@ -18,9 +18,9 @@ module RpxAuthentication
         if params[:session] and !params[:session][:email].blank? and !params[:session][:password].blank?
           super
         else
-          if (params[:token] && profile = RpxAuthentication::Gateway.authenticate(params[:token]))
-            unless (user = RpxAuthentication.user_model.find_by_identifier(profile["identifier"]))
-              user = RpxAuthentication.user_model.create_from_rpx(profile)
+          if (params[:token] && profile = RpxClearance::Gateway.authenticate(params[:token]))
+            unless (user = RpxClearance.user_model.find_by_identifier(profile["identifier"]))
+              user = RpxClearance.user_model.create_from_rpx(profile)
             end
             
             log_user_in(user)

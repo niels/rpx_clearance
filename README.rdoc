@@ -1,5 +1,5 @@
-= rpx_authentication
-http://www.github.com/Nielsomat/rpx_authentication
+= rpx_clearance
+http://www.github.com/Nielsomat/rpx_clearance
 
 
 Allows for easy integration of rpxnow.com into your Rails app. 
@@ -16,16 +16,16 @@ Allows for easy integration of rpxnow.com into your Rails app.
 
 == Installation
 
-	./script/plugin install git://github.com/Nielsomat/rpx_authentication.git
+	./script/plugin install git://github.com/Nielsomat/rpx_clearance.git
 or
-	git submodule add git://github.com/Nielsomat/rpx_authentication.git vendor/plugins/rpx_authentication
+	git submodule add git://github.com/Nielsomat/rpx_clearance.git vendor/plugins/rpx_clearance
 
 
 
 == Configuration
-	ordimini% cat config/initializers/rpx_authentication.rb
-	RpxAuthentication.api_key = "bbk3454j35b3k4j3b4567876869b6j7bjkbjk4ba"
-	RpxAuthentication.user_model = Person
+	ordimini% cat config/initializers/rpx_clearance.rb
+	RpxClearance.api_key = "bbk3454j35b3k4j3b4567876869b6j7bjkbjk4ba"
+	RpxClearance.user_model = Person
 	
 	
 	
@@ -36,10 +36,10 @@ or
 		  scrolling="no" frameBorder="no" style="width:400px;height:240px;">
 		</iframe>
 - The controller responding to the above session_url should 
-		include RpxAuthentication::SessionsController
+		include RpxClearance::SessionsController
 	which provides a create function out of the box
 - Your user model (e.g. class User < ActiveRecord::Base; end) should
-		include RpxAuthentication::UserModel
+		include RpxClearance::UserModel
 	which allows for easy creation of new users from profile data provided by RPXnow.com
 
 

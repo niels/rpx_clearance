@@ -3,16 +3,16 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 
 class UserModel
-  include RpxAuthentication::UserModel
+  include RpxClearance::UserModel
   
   attr_accessor :identifier, :given_name, :family_name
 end
 
-RpxAuthentication.user_model = UserModel
+RpxClearance.user_model = UserModel
 
 
 
-describe RpxAuthentication::UserModel, 'UserModel mixin' do
+describe RpxClearance::UserModel, 'UserModel mixin' do
   
   it "new_from_rpx should create a new user model from profile data" do
     profile_data = {
