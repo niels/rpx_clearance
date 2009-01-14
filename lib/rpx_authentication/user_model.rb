@@ -1,7 +1,11 @@
 module RpxAuthentication  
   module UserModel
+    
     def self.included(base)
       base.class_eval do
+        
+        include Clearance::App::Models::User
+        
         cattr_accessor :rpx_mappings
         self.rpx_mappings = {
           :avatar => :photo,
@@ -19,10 +23,13 @@ module RpxAuthentication
         }
         
         extend ClassMethods
+        
       end
     end
     
+    
     module ClassMethods
+      
       def new_from_rpx(profile_data)
         user = RpxAuthentication.user_model.new
         
@@ -58,6 +65,7 @@ module RpxAuthentication
         user.save
         user
       end
+      
     end
     
   end
